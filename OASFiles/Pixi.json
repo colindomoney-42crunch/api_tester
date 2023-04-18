@@ -622,11 +622,6 @@
             "required": true
           }
         ],
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
