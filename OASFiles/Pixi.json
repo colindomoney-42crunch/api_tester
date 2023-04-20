@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "http://ayepeye.ngrok.app/api"
+      "url": "https://ayepeye.ngrok.app/api"
     }
   ],
   "tags": [
@@ -155,7 +155,7 @@
               {
                 "x-42c-set-client-ip_0.1": {
                   "ip.header.name": "X-Forwarded-For",
-                  "ip.header.mandatory": true,
+                  "ip.header.mandatory": false,
                   "remote.ip.allowlist": []
                 }
               },

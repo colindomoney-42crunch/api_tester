@@ -20,6 +20,9 @@ var jwt = require('jsonwebtoken');
 // for the shell exec goodness
 const { exec } = require("child_process");
 
+// for the IP address goodness
+var Address4 = require('ip-address').Address4;
+
 // Crypto to generate UUIDs
 const { v4: uuidv4 } = require('uuid');
 
@@ -448,3 +451,4 @@ api.get('/api/admin/ping/:ipAddress', api_token_check, function (req, res) {
 		return;    
 	}
 });
+
