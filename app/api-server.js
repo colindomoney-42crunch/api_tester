@@ -416,3 +416,24 @@ api.get('/api/admin/all_users', api_token_check, function (req, res) {
 	})
 });
 
+api.get('/api/admin/ping/:ipAddress', api_token_check, function (req, res) {
+	var command_to_run = "ping -c 1 " + req.params.ipAddress;
+
+	exec(command_to_run, (error, stdout, stderr) => {
+		if (error) {
+			console.log(`error: ${error.message}`);
+			res.status(400).send('Error:' + error.message)
+			return;
+		}
+		if (stderr) {
+			console.log(`stderr: ${stderr}`);
+			res.status(400).send('Error:' + stderr.message)
+			return;
+		}
+
+		console.log(`stdout: ${stdout}`);
+
+		var my_output = stdout;
+		res.status(200).send(my_output);
+	});
+});
