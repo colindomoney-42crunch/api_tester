@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "https://ayepeye.ngrok.app/api"
+      "url": "https://host.mbm1pro.home:8080/api"
     }
   ],
   "tags": [
@@ -640,7 +640,8 @@
                       "type": "integer"
                     },
                     "response": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 2048
                     }
                   }
                 },
@@ -660,16 +661,28 @@
                       "response": "Here is the reply"
                     }
                   },
+                  "additionalProperties": false,
                   "properties": {
                     "status": {
                       "type": "integer"
                     },
                     "response": {
-                      "type": "string"
+                      "type": "string",
+                      "maxLength": 2048
                     }
                   }
                 },
                 "examples": {}
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
               }
             }
           }

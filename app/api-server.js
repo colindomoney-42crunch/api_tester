@@ -436,9 +436,6 @@ api.get('/api/admin/ping/:ipAddress', api_token_check, function (req, res) {
 			}
 	
 			console.log(`stdout: ${stdout}`);
-	
-			// res.set('Content-Type', 'text/plain');
-			// res.status(200).send(stdout);
 			res.status(200).json({ "status": 0, "output": stdout })
 		});
 
