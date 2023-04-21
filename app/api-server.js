@@ -447,4 +447,3 @@ api.get('/api/admin/ping/:ipAddress', api_token_check, function (req, res) {
 		return;    
 	}
 });
-
