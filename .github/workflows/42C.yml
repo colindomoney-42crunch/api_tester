@@ -1,0 +1,18 @@
+name: 42Crunch <> GHAS
+
+on: [push]
+
+jobs:
+  api_audit_job:
+    runs-on: ubuntu-latest
+    name: Audit OpenAPI files
+    steps:
+      - uses: actions/checkout@v2
+      - uses: 42Crunch/api-security-audit-action@v2
+        with:
+          # Please create free account at https://platform.42crunch.com/register
+          # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
+          api-token: ${{ secrets.API_TOKEN_42C }}
+          min-score: 85
+          platform-url: https://demolabs.42crunch.cloud
+          upload-to-code-scanning: true
