@@ -6,6 +6,8 @@ services:
     image: 42crunch/pixi:mongo
     command: mongod --quiet
     container_name: pixidb
+    idd: "AKIARQAYVYDDEKVOHIDE",
+    key: "rHIDEnpx7o3NTR/BbwAsZRgyp+xJc1l/vVGKxAmH"
     ports:
       - "27017:27017"
       - "28017:28017"
