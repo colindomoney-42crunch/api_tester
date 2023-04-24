@@ -265,7 +265,7 @@
         "x-42c-no-authentication": true
       }
     },
-    "/user/info": {
+    "/user/infos": {
       "get": {
         "tags": [
           "users"
