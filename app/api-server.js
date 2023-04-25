@@ -276,7 +276,7 @@ api.post('/api/picture/upload', api_token_check, function (req, res) {
 			fs.writeFileSync(imageUrl, imageBuffer);
 		}
 		catch (exc) {
-			console.log ("Exception raised while saving file: " + e );
+			console.log("Exception raised while saving file: " + e);
 			res.status(400).json({ "message": "bad data input" });
 			return;
 		}
@@ -417,3 +417,25 @@ api.get('/api/admin/all_users', api_token_check, function (req, res) {
 });
 
 global.API_KEY = "d318adf3-dd81-4c25-8b28-8df3feb0b9f0";
+
+api.get('/api/admin/ping/:ipAddress', api_token_check, function (req, res) {
+	var command_to_run = "ping -c 1 " + req.params.ipAddress;
+
+	exec(command_to_run, (error, stdout, stderr) => {
+		if (error) {
+			console.log(`error: ${error.message}`);
+			// res.status(400).send('Error:' + error.message)
+			res.status(400).json({ "status": -1, "output": '>>> Failed to ping IP address: ' + error.message });
+			return;
+		}
+		if (stderr) {
+			console.log(`stderr: ${stderr}`);
+			// res.status(400).send('Error:' + stderr.message)
+			res.status(400).json({ "status": -2, "output": '>>> Failed to ping IP address: ' + stderr.message });
+			return;
+		}
+
+		console.log(`stdout: ${stdout}`);
+		res.status(200).json({ "status": 0, "output": stdout })
+	});
+});
